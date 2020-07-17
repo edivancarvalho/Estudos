@@ -1,0 +1,87 @@
+body
+{
+    background-color: rgb(145, 173, 19);
+}
+h1,h2,h3
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section
+{
+    background-color: burlywood;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 10px;
+}
+
+footer
+{
+    background-color: darkslateblue;
+    color: #000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+}
+
+img, video
+{
+    max-width: 100%;
+}
+
+nav
+{
+    background-color: darkslategray;
+    height: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav ul
+{
+height: auto;
+padding: 8px 0px;
+margin: 0px;
+}
+nav li
+{
+    display: inline;
+    padding: 10px;
+    margin: 0px;
+}
+nav a
+{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 8px 8px 8px;
+}
+
+nav a:hover
+{
+    color: rgb(153, 187, 153);
+    background-color: dimgrey;
+}
+
+@media all and (min-width:960px)
+{
+    body
+    {
+        width: 960px;
+        margin: auto;
+    }
+}
+
+@media all and (max-width: width 480px)
+{
+    nav
+    {
+        height: 100%;
+    }
+    nav li
+    {
+        display: block;
+        padding: 10px;
+        margin: 0px;
+    }
+}
