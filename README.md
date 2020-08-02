@@ -1,1 +1,7 @@
-### Pasta de arquivos de Estudo
+### Pasta de arquivos de Estudos
+
+* Web
+	* Html
+	* js
+
+* Shell-Script
