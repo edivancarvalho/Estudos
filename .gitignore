@@ -1,2 +1,5 @@
 
 Java/loiane/build.xml
+*.xml
+*.properties
+*.mf
