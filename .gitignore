@@ -3,3 +3,4 @@ Java/loiane/build.xml
 *.xml
 *.properties
 *.mf
+/Java/loiane/build/
