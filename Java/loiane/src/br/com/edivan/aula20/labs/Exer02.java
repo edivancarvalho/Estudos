@@ -47,7 +47,8 @@ public class Exer02 {
         }
         System.out.println("Maior valor da linha 5 = " + maiorL5);
         System.out.println("Menor valor da linha 5 = " + menorL5);
-
+        
+        // maior e menor da coluna 7
         int maiorC7 = 0;
         int menorC7 = 101; // o ideal é usar o: Integer.MAX_VALUE;
         int col7 = 7;
