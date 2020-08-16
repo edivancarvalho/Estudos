@@ -13,7 +13,7 @@ public class array {
         double tempDia05 = 22.5;
         double tempDia06 = 15.2;
         
-        // usando array
+        // inicializando um array
         double[] temperaturas = new double[31];
         temperaturas[0] = 16.4;
         temperaturas[1] = 23.4;

@@ -6,7 +6,7 @@ alternadamente informando a posição onde deseja colocar a sua
 peça (‘O’ ou ‘X’). O programa deve impedir jogadas inválidas e
 determinar automaticamente quando o jogo terminou e quem foi o
 vencedor (jogador1 ou jogador2). A cada nova jogada, o programa
-deve atualizar a situação do tabuleiro na tela.
+deve atualizar a situação do tabuleiro na tela
  */
 package br.com.edivan.aula20.labs;
 
