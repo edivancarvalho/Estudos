@@ -4,3 +4,5 @@ Java/loiane/build.xml
 *.properties
 *.mf
 /Java/loiane/build/
+/Logica/DevDojo/nbproject/private/
+/Logica/DevDojo/build/
