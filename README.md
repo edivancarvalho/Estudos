@@ -1,4 +1,4 @@
-### Pasta de arquivos de Estudos
+### Estrutura do diretorio de Estudos
 
 * Docker
 * Java
