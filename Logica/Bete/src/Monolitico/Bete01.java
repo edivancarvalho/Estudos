@@ -1,6 +1,4 @@
-
 package Monolitico;
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,8 +13,6 @@ public class Bete01 extends javax.swing.JFrame {
     static String nome = "";
     static String telefone = "";
     static String email = "";
-   
-    
     
 //    Object [][] dados = {
 //        {"Edivan Carvalho", "45 6789 1234", "eu@localho.com"},
@@ -199,23 +195,7 @@ public class Bete01 extends javax.swing.JFrame {
         DefaultTableModel tabelaContato = (DefaultTableModel)jTable_Tabela.getModel();
         Object[] dados = {jText_Nome.getText(), jText_Tel.getText(), jText_Email.getText()};
         
-        tabelaContato.addRow(dados);
-        
-        
-        
-//        try {
-//            Bete01 mostrar = new Bete01();
-//            
-//            mostrar.jText_Nome.getText();
-//            mostrar.jText_Tel.getText();
-//            mostrar.setName(jText_Email.getText());
-//            
-//            
-//            //preencherFormularioTela();
-//        } catch (Exception erro) {
-//            JOptionPane.showMessageDialog(null, erro.getMessage());
-//        }
-     
+        tabelaContato.addRow(dados);             
     }//GEN-LAST:event_btn_SalvarActionPerformed
 
    
