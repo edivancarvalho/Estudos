@@ -1,4 +1,4 @@
-package br.com.abc.introducao;
+package br.com.abc.introducao.controlefluxo;
 
 /**
  * Operado Ternario
