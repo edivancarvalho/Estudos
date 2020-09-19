@@ -19,12 +19,14 @@ public class Professor2 {
     public String rg;
     public String cpf;
     
-    public void imprime(Professor2 profImprime){
+    // quando esta na mesma classe usar-se o this e nao o -->
+    // public void imprime(Professor2 profImprime){}
+    public void imprime(){
         System.out.println("-----------------");
-        System.out.println(profImprime.cpf);
-        System.out.println(profImprime.matricular);
-        System.out.println(profImprime.nome);
-        System.out.println(profImprime.rg);
+        System.out.println(this.cpf);
+        System.out.println(this.matricular);
+        System.out.println(this.nome);
+        System.out.println(this.rg);
     }
     
 }
