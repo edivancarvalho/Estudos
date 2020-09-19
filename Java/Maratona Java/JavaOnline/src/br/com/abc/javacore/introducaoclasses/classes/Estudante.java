@@ -1,4 +1,4 @@
-package br.com.abc.javacore.introducaoclasses;
+package br.com.abc.javacore.introducaoclasses.classes;
 
 /**
  *
