@@ -10,14 +10,13 @@ public class ProfessorTest {
 
     public static void main(String[] args) {
 
-        Professor professor = new Professor();
-        
-        Professor professor2 =  new Professor();
+        Professor professor = new Professor();        
         professor.nome = "Edivan Carvalho";
         professor.matricular = 390303;
         professor.rg = 341234;
-        professor.cpf = 11111111111L;
         
+        professor.cpf = 11111111111L;
+        Professor professor2 =  new Professor();
         professor2.nome = "Jose da silva";
         professor2.matricular = 3411;
         professor2.rg = 1234123;
