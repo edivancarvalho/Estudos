@@ -25,6 +25,13 @@ public class CalculadoraTest {
         System.out.println("\nImprimir dois numeros");
         calculadora.imprimeDoisNumerosDividos(20, 5);
         System.out.println("Continuando a exec");
+        
+//        int [] numeros = new int []{1,2,3,4,5};
+//        calculadora.somaArray(numeros);
+        
+        int [] numeros = {1,2,3,4,5};
+        calculadora.somaArray(numeros);
+        calculadora.somaVarArgs(1,2,3,4,5);
     }
     
 }
