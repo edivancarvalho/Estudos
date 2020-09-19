@@ -16,6 +16,8 @@ public class EstudanteTest {
         estudante.setNotas(new double[]{1, 7, 3});
         estudante.print();
         estudante.tirarMedia();
+        
+        System.out.println("Aprovado? " + estudante.isAprovado());
     }
 
 }
