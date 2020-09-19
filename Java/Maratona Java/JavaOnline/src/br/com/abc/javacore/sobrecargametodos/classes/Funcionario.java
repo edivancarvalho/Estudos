@@ -11,16 +11,17 @@ public class Funcionario {
     private double salario;
     private String rg;
 
-    public void init(String nome, String cpf, double salario) {
+    // criando construtor
+    public Funcionario(String nome, String cpf, double salario, String rg) {
+        System.out.println("Dentro do construtor");
         this.nome = nome;
         this.cpf = cpf;
         this.salario = salario;
+        this.rg = rg;
     }
     
-    // sobrecarga de metodo;https://youtu.be/uq4O__CGPdo?list=PL62G310vn6nHrMr1tFLNOYP_c73m6nAzL
-    public void init(String nome, String cpf, double salario, String rg) {
-        init(nome, cpf, salario);
-        this.rg = rg;
+    public Funcionario(){
+        
     }
 
     public void imprime() {
