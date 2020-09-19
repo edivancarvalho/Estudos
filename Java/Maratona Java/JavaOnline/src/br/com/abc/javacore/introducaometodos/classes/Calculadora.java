@@ -36,12 +36,29 @@ public class Calculadora {
         System.out.println("Não é possivel dividir por 0.");
     }
     
-    public void alteraDoisNumeros(int num1, int num2){
-        num1 = 30;
-        num2 = 40;
+    public void alteraDoisNumeros(int a, int b){
+        a = 30;
+        b = 40;
         System.out.println("Dentro do altera dois números");
-        System.out.println("num1: "+ num1);
-        System.out.println("num2: "+ num2);
+        System.out.println("num1: "+ a);
+        System.out.println("num2: "+ b);
+    }
+    
+    public void somaArray(int [] numeros){
+        int soma = 0;
+        for(int num : numeros){
+            soma += num;
+        }
+        System.out.println(soma);
+    }
+    
+    // usando o 'VarArgs' mesmo codigo acima.MAIS muda a forma de chamada do metodo;
+    public void somaVarArgs(int... numeros){
+        int soma = 0;
+        for(int num : numeros){
+            soma += num;
+        }
+        System.out.println(soma);
     }
 
 }
