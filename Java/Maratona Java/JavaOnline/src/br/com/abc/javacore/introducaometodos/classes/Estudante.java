@@ -9,6 +9,7 @@ public class Estudante {
     private String nome;
     private int idade;
     private double[] notas;
+    private boolean aprovado;
 
     public void print() {
         System.out.println("Nome: " + this.nome);
@@ -25,7 +26,7 @@ public class Estudante {
         // validação de notas null no Array;
         // caso a media nao exita;
         if (this.notas == null) {
-            System.out.println("esse aluuno não possui notas");
+            System.out.println("esse aluno não possui notas");
             return;
         }
 
@@ -36,10 +37,13 @@ public class Estudante {
         media = media / this.notas.length;
 
         if (media > 6) {
+            this.aprovado = true;
             System.out.println("\nA média é " + media + " situação: Aprovado");
-            return;
+
+        } else {
+            this.aprovado = false;
+            System.out.println("\nA média é " + media + " situação: Reprovado");
         }
-        System.out.println("\nA média é " + media + " situação: Reprovado");
     }
 
     public void setNome(String nome) {
@@ -68,6 +72,11 @@ public class Estudante {
 
     public double[] getNotas() {
         return this.notas;
+    }
+    
+    // setAprovado não precisa pois so tera retorno de aprovação ou nao;
+    public boolean isAprovado(){
+        return this.aprovado;
     }
 
 }
