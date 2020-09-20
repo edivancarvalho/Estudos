@@ -9,7 +9,9 @@ import br.com.abc.javacore.Fmodificadoestatico.classes.Carro;
 public class CarroTest {
 
     public static void main(String[] args) {
-        Carro.velocidadeLimite = 220;
+        // Buscando informações de metodo estatico;
+        Carro.setVelocidadeLimite(220);
+        System.out.println(Carro.getVelocidadeLimite());
 
         Carro c1 = new Carro("BMW", 280);
         Carro c2 = new Carro("Audi", 275);
