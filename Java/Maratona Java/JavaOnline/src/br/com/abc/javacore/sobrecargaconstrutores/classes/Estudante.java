@@ -36,6 +36,7 @@ public class Estudante {
         for (double nota : notas) {
             System.out.println(nota + " ");
         }
+        System.out.println(this.dataMatricula);
 
     }
 
