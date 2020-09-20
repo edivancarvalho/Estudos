@@ -19,11 +19,24 @@ public class Funcionario {
         this.salario = salario;
         this.rg = rg;
     }
-    
-    public Funcionario(){
-        
+
+    public Funcionario() {
+
     }
 
+    // Sobrecarga de metodos
+    public void init(String nome, String cpf, double salario) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.salario = salario;
+    }
+
+    public void init(String nome, String cpf, double salario, String rg) {
+        init(nome, cpf, salario);
+        this.rg = rg;
+    }
+    
+    // Metodo Imprime
     public void imprime() {
         System.out.println(this.nome);
         System.out.println(this.cpf);
@@ -31,6 +44,7 @@ public class Funcionario {
         System.out.println(this.rg);
     }
 
+    // Set's e Get's
     public void setNome(String nome) {
         this.nome = nome;
     }
