@@ -22,7 +22,7 @@ public class Array3 {
         
         // usando [for each] = ele faz a mesma coisa que o for normal;
         for (int aux : numeros2){
-            System.out.println(aux);
+            System.out.print(" " + aux);
         }
         
         
