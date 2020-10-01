@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import dao.Conexao;
-import dao.UsuarioDAO;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Usuario;
+//import dao.Conexao;
 
+import dao.Conexao;
+import java.sql.Connection;
+
+//import java.sql.Connection;
+//import java.sql.SQLException;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import model.Usuario;
 /**
  *
  * @author edivan
@@ -47,7 +44,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenu2.setText("Edit");
 
-        jMenuItem1.setText("Testa usuario DAO");
+        jMenuItem1.setText("Testa Usuario DAO");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -74,22 +71,9 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            Connection conexao = new Conexao().getConnection();
-            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-            
-            // Teste de Insert
-            Usuario usuarioInsert = new Usuario("TesteInsert", "teste");
-            usuarioDao.insert(usuarioInsert);
-            
-            // teste Select ID
-            // teste Delete
-            // Teste Selwect all
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        Connection conexao = Conexao().getConnection();
+//        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

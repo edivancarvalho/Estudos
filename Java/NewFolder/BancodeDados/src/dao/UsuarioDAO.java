@@ -26,7 +26,7 @@ public class UsuarioDAO {
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
-        statement.setString(1, usuario.getSenha());
+        statement.setString(2, usuario.getSenha());
         statement.execute();
         // ↓ Aqui não é bom fechar a conexao;
         //  connection.close();
@@ -39,7 +39,7 @@ public class UsuarioDAO {
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
-        statement.setString(1, usuario.getSenha());
+        statement.setString(2, usuario.getSenha());
         statement.setInt(3, usuario.getId());
         statement.execute();
     }
