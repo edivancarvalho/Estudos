@@ -20,9 +20,9 @@ public class UsuarioDAO {
         this.connection = connection;
     }
 
-    public void insert(Usuario usuario) throws SQLException {
+    public Usuario insert(Usuario usuario) throws SQLException {
         // o insert esta protegido com ataque de SQLInject
-        String sql = "insert into login(login,senha) values(?,?); ";
+        String sql = "insert into login(login,senha) values(?,?);";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
@@ -30,6 +30,7 @@ public class UsuarioDAO {
         statement.execute();
         // ↓ Aqui não é bom fechar a conexao;
         //  connection.close();
+        return null;
 
     }
 
@@ -44,7 +45,7 @@ public class UsuarioDAO {
         statement.execute();
     }
 
-    public void isertOrUpdate(Usuario usuario) throws SQLException {
+    public void insertOrUpdate(Usuario usuario) throws SQLException {
         if (usuario.getId() > 0) {
             update(usuario);
         } else {
@@ -52,7 +53,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void delete(Usuario usuario) throws SQLException {
+    public Usuario delete(Usuario usuario) throws SQLException {
         // delete já esta protegido com ataque de SQLInject
         String sql = "delete from login where id = ? ";
 
@@ -60,6 +61,7 @@ public class UsuarioDAO {
 
         statement.setInt(1, usuario.getId());
         statement.execute();
+        return null;
     }
 
     public ArrayList<Usuario> selectAll() throws SQLException {
@@ -99,11 +101,12 @@ public class UsuarioDAO {
 //        ArrayList<Usuario> usuarios = pesquisa(statement);
 //        return usuarios.get(0);
 //  ou fazer assim
+        statement.execute();
         return pesquisa(statement).get(0);
 
     }
 
-    public boolean existeNoBancoUsuarioESenha(Usuario usuario) throws SQLException {
+    public boolean existeNoBancoUsuarioESenha(Usuario usuarioNovo) throws SQLException {
         // ↓ com a linha abaixo a tela de login fica vulneravel a SQLinject
         //String sql = "select * from login where login= '"+usuario.getUsuario()+"' and senha = '"+usuario.getSenha()+"' ";
         // select * from login where login= '' or 1=1-- ' and senha = '
@@ -113,8 +116,8 @@ public class UsuarioDAO {
         String sql = "select * from login where login=? and senha = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, usuario.getUsuario());
-        statement.setString(2, usuario.getSenha());
+        statement.setString(1, usuarioNovo.getUsuario());
+        statement.setString(2, usuarioNovo.getSenha());
         //̉←↓↓↓ 
 
         statement.execute();
@@ -129,4 +132,5 @@ public class UsuarioDAO {
         return resulset.next();
     }
 
+//   
 }
