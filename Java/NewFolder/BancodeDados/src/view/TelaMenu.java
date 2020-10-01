@@ -1,19 +1,23 @@
 package view;
 
 //import dao.Conexao;
+;
 
 import dao.Conexao;
+import dao.UsuarioDAO;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Usuario;
 
-//import java.sql.Connection;
-//import java.sql.SQLException;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-//import model.Usuario;
 /**
  *
  * @author edivan
  */
+
+
 public class TelaMenu extends javax.swing.JFrame {
 
     /**
@@ -72,8 +76,31 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
-        Connection conexao = Conexao().getConnection();
-//        
+        try {
+            Connection conexao = new Conexao().getConnection();
+            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+
+            // insert
+            Usuario usuarioInsert = new Usuario("assfc", "123");            
+            Usuario usuarioInserido = usuarioDao.insert(usuarioInsert);
+
+            // teste select Id
+            Usuario usuarioSelecionado = usuarioDao.selectPorId(usuarioInserido);
+//          
+            // teste Delete
+            usuarioDao.delete(usuarioSelecionado);
+            
+//            Teste Select All
+            ArrayList<Usuario> usuarios = usuarioDao.selectAll();
+            
+            for (Usuario usuario : usuarios) {
+                System.out.println(usuario.getUsuario());
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
