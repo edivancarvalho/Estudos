@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Usuario;
 
@@ -31,7 +32,8 @@ public class UsuarioDAO {
         //  connection.close();
 
     }
-    public void update(Usuario usuario) throws SQLException{
+
+    public void update(Usuario usuario) throws SQLException {
         // o insert esta protegido com ataque de SQLInject
         String sql = "update login set login = ?, senha = ? where id = ? ";
 
@@ -40,6 +42,65 @@ public class UsuarioDAO {
         statement.setString(1, usuario.getSenha());
         statement.setInt(3, usuario.getId());
         statement.execute();
+    }
+
+    public void isertOrUpdate(Usuario usuario) throws SQLException {
+        if (usuario.getId() > 0) {
+            update(usuario);
+        } else {
+            insert(usuario);
+        }
+    }
+
+    public void delete(Usuario usuario) throws SQLException {
+        // delete já esta protegido com ataque de SQLInject
+        String sql = "delete from login where id = ? ";
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, usuario.getId());
+        statement.execute();
+    }
+
+    public ArrayList<Usuario> selectAll() throws SQLException {
+        // Mostra todos os login
+        String sql = "select * from login";
+        PreparedStatement statement = connection.prepareStatement(sql);
+//      ↓ aqui chama o metodo pesquisa.
+        return pesquisa(statement);
+
+    }
+
+    private ArrayList<Usuario> pesquisa(PreparedStatement statement) throws SQLException {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+
+        statement.execute();
+        // pegar todos os resuultado vindo do sql
+        ResultSet resultSet = statement.getResultSet();
+        // enquanto tive uma nova linha da tabela
+        while (resultSet.next()) {
+            // pega a linha "id" e salva na variavel id e assim por diante;
+            int id = resultSet.getInt("id");
+            String login = resultSet.getString("login");
+            String senha = resultSet.getString("senha");
+
+            Usuario usuarioComdadosDoBanco = new Usuario(id, senha, senha);
+            usuarios.add(usuarioComdadosDoBanco);
+        }
+        return usuarios;
+    }
+
+    public Usuario selectPorId(Usuario usuario) throws SQLException {
+        String sql = "select * from login where id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, usuario.getId());
+
+//        ArrayList<Usuario> usuarios = pesquisa(statement);
+//        return usuarios.get(0);
+//  ou fazer assim
+        return pesquisa(statement).get(0);
+
     }
 
     public boolean existeNoBancoUsuarioESenha(Usuario usuario) throws SQLException {
@@ -55,7 +116,7 @@ public class UsuarioDAO {
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
         //̉←↓↓↓ 
-        
+
         statement.execute();
         // ↓ pegar as informações que vem do banco.
         ResultSet resulset = statement.getResultSet();
