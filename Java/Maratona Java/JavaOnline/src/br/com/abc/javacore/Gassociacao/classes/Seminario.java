@@ -5,36 +5,46 @@ package br.com.abc.javacore.Gassociacao.classes;
  * @author edivan
  */
 public class Seminario {
+
     private String titulo;
     // seminario tem varios alunos
     private Aluno[] alunos;
-    
+
     private Professor professor;
     private Local local;
 // contrutores;
+
     public Seminario(String titulo) {
         this.titulo = titulo;
     }
 
     public Seminario() {
     }
-    // prints
-    public void print(){
-        System.out.println("=====\t Relatorio de Seminario \t=====");
-        System.out.println("Titulo: "+this.titulo);
-        System.out.println("Professor: " + this.professor.getNome());
-        System.out.println("Local: " + this.local.getRua()+ "Bairro: " + this.local.getBairro());
-        System.out.println("Alunos participantes");
-        for(Aluno aluno : alunos){
-            System.out.println(aluno.getNome());
-        }
-    }
-    
-    
-    
-// gets e sets
-   
 
+    // prints
+    public void print() {
+        System.out.println("=====\t Relatorio de Seminario \t=====");
+        System.out.println("Titulo: " + this.titulo);
+        System.out.println("Professor: " + this.professor.getNome());
+
+        if (this.local != null) {
+            System.out.println("Local: " + this.local.getRua() + "Bairro: " + this.local.getBairro());
+        } else {
+            System.out.println("nenhum local cadastrado par aesse seminario");
+        }
+
+        if (alunos != null && alunos.length != 0) {
+            System.out.println("Alunos participantes");
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno.getNome());
+            }
+            return;
+        }
+        System.out.println("Nenhum Aluuno cadastrado.");
+
+    }
+
+// gets e sets
     public Aluno[] getAlunos() {
         return alunos;
     }
@@ -67,6 +77,4 @@ public class Seminario {
         this.alunos = alunos;
     }
 
-    
-    
 }
