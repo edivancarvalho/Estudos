@@ -23,6 +23,7 @@ public class Aluno {
     public void print() {
         System.out.println("Nome: " + this.nome);
         System.out.println("Idade: " + this.idade);
+
         if (this.seminario != null) {
             System.out.println("Seminario inscrito: " + this.seminario.getTitulo());
         } else {
