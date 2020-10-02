@@ -14,19 +14,25 @@ public class Seminario {
     private Local local;
 // contrutores;
 
-    public Seminario(String titulo) {
-        this.titulo = titulo;
+    public Seminario() {
     }
 
-    public Seminario() {
+    public Seminario(String titulo) {
+        this.titulo = titulo;
     }
 
     // prints
     public void print() {
         System.out.println("=====\t Relatorio de Seminario \t=====");
         System.out.println("Titulo: " + this.titulo);
-        System.out.println("Professor: " + this.professor.getNome());
+        
 
+        if(this.professor != null){
+            System.out.println("Professor "+this.professor.getNome() );
+        }else{
+            System.out.println("Nenhum profesor cadastrado para esse seminario");
+        }
+        
         if (this.local != null) {
             System.out.println("Local: " + this.local.getRua() + "Bairro: " + this.local.getBairro());
         } else {
