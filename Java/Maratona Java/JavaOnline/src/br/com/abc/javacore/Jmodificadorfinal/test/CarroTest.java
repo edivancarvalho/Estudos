@@ -11,11 +11,7 @@ public class CarroTest {
         Carro c = new Carro();
         System.out.println(c.getComprador());
         
-        c.getComprador().setNome("Kuririn");
-        System.out.println(c.getComprador());
-        
-        
-        
+       
     }
     
 }
