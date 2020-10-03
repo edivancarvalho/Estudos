@@ -14,8 +14,6 @@ public class Pessoa {
         return "Pessoa{" + "nome=" + nome + ", idade=" + idade + '}';
     }
 
-    
-
     public String getNome() {
         return nome;
     }
