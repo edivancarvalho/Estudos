@@ -21,11 +21,6 @@ public class Carro {
         System.out.println("Imprimindo um carro");
     }
 
-    public Comprador getCOMPRADOR() {
-        return COMPRADOR;
-    }
-
-
     public String getNome() {
         return nome;
     }
@@ -40,6 +35,10 @@ public class Carro {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public boolean getComprador() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
