@@ -18,14 +18,17 @@ public class HerancaTest {
         end.setBairro("Bairro 1");
         end.setRua("sao pedro");
         
+        
         pessoa.setEndereco(end);
         pessoa.print();
+        System.out.println("----------------");
         
         Funcionario fun = new Funcionario();
         fun.setNome("Jose belo");
         fun.setCpf("123413412");
-        fun.setEndereco(end);
         fun.setSalario(4500.00);
+        fun.setEndereco(end);
+        
         fun.print();
     }
     
