@@ -6,15 +6,13 @@ package br.com.abc.javacore.Kenum.classes;
  */
 public class Cliente {
 
-    private String nome;    
+    private String nome;
     private TipoCliente tipo;
 
     public Cliente(String nome, TipoCliente tipo) {
         this.nome = nome;
         this.tipo = tipo;
     }
-    
-    
 
     public String getNome() {
         return nome;
@@ -36,7 +34,5 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "nome=" + nome + ", tipo=" + tipo + '}';
     }
-    
-    
 
 }
