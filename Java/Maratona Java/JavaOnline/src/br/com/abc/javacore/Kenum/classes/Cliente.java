@@ -6,13 +6,22 @@ package br.com.abc.javacore.Kenum.classes;
  */
 public class Cliente {
 
-    private String nome;
-    private TipoCliente tipo;
-
-    public Cliente(String nome, TipoCliente tipo) {
-        this.nome = nome;
-        this.tipo = tipo;
+    // Criando segundo modelo de enumeração
+    public enum TipoPagamento {
+        AVISTA, APRAZO;
     }
+
+    private String nome;
+    private TipoCliente tipoCliente;
+    private TipoPagamento tipoPagamento;
+
+    public Cliente(String nome, TipoCliente tipoCliente, TipoPagamento tipoPagamento) {
+        this.nome = nome;
+        this.tipoCliente = tipoCliente;
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    
 
     public String getNome() {
         return nome;
@@ -23,16 +32,28 @@ public class Cliente {
     }
 
     public TipoCliente getTipo() {
-        return tipo;
+        return tipoCliente;
     }
 
     public void setTipo(TipoCliente tipo) {
-        this.tipo = tipo;
+        this.tipoCliente = tipo;
     }
 
+    public TipoPagamento getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(TipoPagamento tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", tipo=" + tipo + '}';
+        return "Cliente{" + "nome=" + nome + ", tipo=" + tipoCliente + ", tipoPagamento=" + tipoPagamento + 
+                ", numero=" +tipoCliente.getTipo();
     }
+
+    
 
 }
