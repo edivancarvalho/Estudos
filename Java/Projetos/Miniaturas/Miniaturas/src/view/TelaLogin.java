@@ -2,6 +2,7 @@ package view;
 
 import java.sql.*;
 import dao.ModuloConexao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,6 +36,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     TelaPrincipal principal = new TelaPrincipal();
                     principal.setVisible(true);
                     principal.lblUsuario.setText(rs.getString(2));
+                    principal.lblUsuario.setForeground(Color.red);
                     this.dispose();
 
                 } else {
@@ -43,6 +45,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     principal.setVisible(true);
                     // Mostra o nome do usuario
                     principal.lblUsuario.setText(rs.getString(2));
+                    principal.lblUsuario.setForeground(Color.BLUE);
                     // fechar a tela de login apos for aceito;
                     this.dispose();
                     //conexao.close();
