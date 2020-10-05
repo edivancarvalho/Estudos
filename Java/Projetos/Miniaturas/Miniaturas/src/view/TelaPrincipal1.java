@@ -34,22 +34,22 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
         conexao = ModuloConexao.conector();
     }
 
-    private void consulta() {
-        String sql = "select * from tbusuarios where iduser=?";
-        try {
-
-            pst = conexao.prepareStatement(sql);
-            // pst.setString(1, txtId.getText());
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                //   txtUsuario.setText(rs.getString(2));
-                System.out.println(rs.getString(2));
-            } else {
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "vamos ver!!");
-        }
-    }
+//    private void consulta() {
+//        String sql = "select * from tbusuarios where iduser=?";
+//        try {
+//
+//            pst = conexao.prepareStatement(sql);
+//            // pst.setString(1, txtId.getText());
+//            rs = pst.executeQuery();
+//            if (rs.next()) {
+//                //   txtUsuario.setText(rs.getString(2));
+//                System.out.println(rs.getString(2));
+//            } else {
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "vamos ver!!");
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,8 +61,6 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
     private void initComponents() {
 
         lblUsuario = new javax.swing.JLabel();
-        btnConsulta = new javax.swing.JButton();
-        btnCadastrar = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         lblData = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -87,15 +85,6 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         lblUsuario.setText("Usuario");
-
-        btnConsulta.setText("Consulta");
-        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaActionPerformed(evt);
-            }
-        });
-
-        btnCadastrar.setText("Cadastrar");
 
         desktop.setPreferredSize(new java.awt.Dimension(830, 681));
 
@@ -168,42 +157,26 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 669, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblData)
-                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblUsuario)
-                        .addGap(36, 36, 36))))
+                        .addGap(0, 789, Short.MAX_VALUE)
+                        .addComponent(lblData)))
+                .addGap(50, 50, 50)
+                .addComponent(lblUsuario)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblData)
                     .addComponent(lblUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsulta)
-                    .addComponent(btnCadastrar))
-                .addContainerGap())
+                .addGap(49, 49, 49))
         );
 
         setSize(new java.awt.Dimension(966, 707));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
-        // Chamando o metodo consultar;
-        consulta();
-    }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void MenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuClienteActionPerformed
         // chama a tela cliente
@@ -291,8 +264,6 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenu MenRel;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem MenuCliente;
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnConsulta;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblData;

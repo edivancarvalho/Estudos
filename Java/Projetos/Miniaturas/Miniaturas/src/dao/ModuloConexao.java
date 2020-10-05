@@ -29,7 +29,7 @@ public class ModuloConexao {
         
         // = Configuração no POstrgrs
         String driver = "org.postgresql.Driver";
-        String url = "jdbc:postgresql://192.168.200.150:5432/acam";
+        String url = "jdbc:postgresql://192.168.1.150:5432/acam";
         String user = "postgres";
         String password = "suporte";
         // Estabelecendo a conexão com o banco de dados;

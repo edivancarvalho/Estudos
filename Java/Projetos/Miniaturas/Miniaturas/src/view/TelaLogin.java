@@ -3,6 +3,7 @@ package view;
 import java.sql.*;
 import dao.ModuloConexao;
 import java.awt.Color;
+import java.awt.Desktop;
 import javax.swing.JOptionPane;
 
 /**
@@ -176,8 +177,16 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCadastraUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraUsuarioActionPerformed
-        TelaUsuario telaUsuario = new TelaUsuario();
-        telaUsuario.setVisible(true);
+        
+        TelaRegistro registro = new TelaRegistro();
+        registro.setVisible(true);
+        
+//        TelaUsuario tusuario = new TelaUsuario();
+//        tusuario.setVisible(true);
+        
+        
+        //TelaUsuario telaUsuario = new TelaUsuario();
+        //telaUsuario.setVisible(true);
         
 //        TelaUsuario telaUsuario = new TelaUsuario();
 //        telaUsuario.setVisible(true);
