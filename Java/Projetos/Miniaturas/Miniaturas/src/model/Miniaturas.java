@@ -12,17 +12,17 @@ public class Miniaturas {
     private String observacoes;
     private String edicao;
     private String escala;
-    private double valor;
+    private String valor;
 
     private Fabricantes[] fabricantes;
-    private Tipo_miniaturas[] tipo_miniaturas;
+    private Tipo_Miniaturas[] tipo_miniaturas;
     private Temas[] temas;
     private Fotos[] fotos;
 
     public Miniaturas() {
     }
 
-    public Miniaturas(int iden, String modelo, String ano, String observacoes, String edicao, String escala, double valor) {
+    public Miniaturas(int iden, String modelo, String ano, String observacoes, String edicao, String escala, String valor) {
         this.iden = iden;
         this.modelo = modelo;
         this.ano = ano;
@@ -93,11 +93,11 @@ public class Miniaturas {
         this.escala = escala;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -109,11 +109,11 @@ public class Miniaturas {
         this.fabricantes = fabricantes;
     }
 
-    public Tipo_miniaturas[] getTipo_miniaturas() {
+    public Tipo_Miniaturas[] getTipo_miniaturas() {
         return tipo_miniaturas;
     }
 
-    public void setTipo_miniaturas(Tipo_miniaturas[] tipo_miniaturas) {
+    public void setTipo_miniaturas(Tipo_Miniaturas[] tipo_miniaturas) {
         this.tipo_miniaturas = tipo_miniaturas;
     }
 
