@@ -180,16 +180,7 @@ public class TelaLogin extends javax.swing.JFrame {
         
         TelaRegistro registro = new TelaRegistro();
         registro.setVisible(true);
-        
-//        TelaUsuario tusuario = new TelaUsuario();
-//        tusuario.setVisible(true);
-        
-        
-        //TelaUsuario telaUsuario = new TelaUsuario();
-        //telaUsuario.setVisible(true);
-        
-//        TelaUsuario telaUsuario = new TelaUsuario();
-//        telaUsuario.setVisible(true);
+
         
     }//GEN-LAST:event_btnCadastraUsuarioActionPerformed
 
