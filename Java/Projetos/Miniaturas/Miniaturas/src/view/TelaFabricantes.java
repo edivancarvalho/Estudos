@@ -2,8 +2,6 @@ package view;
 
 import bll.FabricanteBll;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Fabricantes;
@@ -123,6 +121,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
         jLabel2.setText("ID");
 
         btnFabSalvar.setText("Salvar");
+        btnFabSalvar.setPreferredSize(new java.awt.Dimension(100, 45));
         btnFabSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFabSalvarActionPerformed(evt);
@@ -130,6 +129,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
         });
 
         btnFabExcluir.setText("Excluir");
+        btnFabExcluir.setPreferredSize(new java.awt.Dimension(100, 45));
         btnFabExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFabExcluirActionPerformed(evt);
@@ -137,6 +137,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
         });
 
         btnFabConsultar.setText("Consultar");
+        btnFabConsultar.setPreferredSize(new java.awt.Dimension(100, 45));
         btnFabConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFabConsultarActionPerformed(evt);
@@ -144,6 +145,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
         });
 
         btnFabNovo.setText("Novo");
+        btnFabNovo.setPreferredSize(new java.awt.Dimension(100, 45));
         btnFabNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFabNovoActionPerformed(evt);
@@ -157,16 +159,16 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(26, 26, 26)
                         .addComponent(btnFabSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnFabExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnFabConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnFabNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 54, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,11 +197,11 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFabSalvar)
-                    .addComponent(btnFabExcluir)
-                    .addComponent(btnFabConsultar)
-                    .addComponent(btnFabNovo))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(btnFabSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFabExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFabConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFabNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 562, 344);
