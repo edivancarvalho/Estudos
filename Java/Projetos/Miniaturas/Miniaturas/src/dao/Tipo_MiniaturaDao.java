@@ -22,7 +22,7 @@ public class Tipo_MiniaturaDao {
     }
     
     public void addTipo_Miniatura(Tipo_Miniaturas tminiaturas) throws Exception {
-        String sql = "INSERT INTO fabricantes(fab_nome) VALUES (?)";
+        String sql = "INSERT INTO tipo_miniaturas(tip_min_nome) VALUES (?)";
         try {
 
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class Tipo_MiniaturaDao {
     }
 
     public void deleteTipo_Miniatura(int id) throws Exception {
-        String sql = "DELETE FROM fabricantes WHERE fab_iden=?";
+        String sql = "DELETE FROM tipo_miniaturas WHERE tip_min_iden=?";
         try {
 
             PreparedStatement preparedStatement
@@ -53,7 +53,7 @@ public class Tipo_MiniaturaDao {
     }
 
     public void updateTipo_Miniatura(Tipo_Miniaturas tminiaturas) throws Exception {
-        String sql = "UPDATE fabricantes SET fab_nome=? WHERE fab_iden=?";
+        String sql = "UPDATE tipo_miniaturas SET tip_min_nome=? WHERE tip_min_iden=?";
         try {
             PreparedStatement preparedStatement
                     = conexao.prepareStatement(sql);
@@ -71,15 +71,15 @@ public class Tipo_MiniaturaDao {
 
     public List<Tipo_Miniaturas> getAllTipo_miniatura() throws Exception {
         List<Tipo_Miniaturas> listTipo_miniaturas = new ArrayList<Tipo_Miniaturas>();
-        String sql = "SELECT * FROM fabricantes";
+        String sql = "SELECT * FROM tipo_miniaturas";
         try {
             Statement statement = conexao.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 
                 Tipo_Miniaturas tminiaturas = new Tipo_Miniaturas();
-                tminiaturas.setIden(rs.getInt("fab_iden"));
-                tminiaturas.setTipo(rs.getString("fab_nome"));
+                tminiaturas.setIden(rs.getInt("tip_min_iden"));
+                tminiaturas.setTipo(rs.getString("tip_min_nome"));
 
                 listTipo_miniaturas.add(tminiaturas);
                 
@@ -94,15 +94,15 @@ public class Tipo_MiniaturaDao {
     public Tipo_Miniaturas getTipo_miniaturaById(int id) throws Exception {
         
         Tipo_Miniaturas tminiaturas = new Tipo_Miniaturas();
-        String sql = "SELECT * FROM fabricantes WHERE fab_iden=?";
+        String sql = "SELECT * FROM tipo_miniaturas WHERE tip_min_iden=?";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                tminiaturas.setIden(rs.getInt("fab_iden"));
-                tminiaturas.setTipo(rs.getString("fab_nome"));
+                tminiaturas.setIden(rs.getInt("tip_min_iden"));
+                tminiaturas.setTipo(rs.getString("tip_min_nome"));
             }
         } catch (Exception erro) {
             throw new Exception("Ocorreu um erro ao buscar este registro de fabricantes\n"
