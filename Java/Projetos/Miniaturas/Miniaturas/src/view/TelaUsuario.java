@@ -23,11 +23,17 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     }
 
     private void consultar() {
-        String sql = "select * from tbusuarios where iduser=?";
+        String sql = "select * from public.tbusuarios where iduser=?";
+        //String sql = "select * from tbusuarios where usuario=?";
+        //String sql = "select * from tbusuarios where iduser=?";
         try {
 
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtUsuId.getText());
+            // pst.setString(1, txtUsuId.getText()); o certo
+            
+            //pst.setInt(1, txtUsuNome.getText());
+            
+            pst.setInt(1, Integer.parseInt(txtUsuId.getText()));
             rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -40,6 +46,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario não cadastrado");
+                txtUsuId.setText(null);
                 txtUsuNome.setText(null);
                 txtUsuFone.setText(null);
                 txtUsuLogin.setText(null);
@@ -74,7 +81,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                 System.out.println(adicionado);
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso");
-
+                    txtUsuId.setText(null);
                     txtUsuNome.setText(null);
                     txtUsuFone.setText(null);
                     txtUsuLogin.setText(null);
@@ -97,8 +104,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             pst.setString(3, txtUsuLogin.getText());
             pst.setString(4, txtUsuSenha.getText());
             pst.setString(5, cboUsuPerfil.getSelectedItem().toString());
-
-            pst.setString(6, txtUsuId.getText());
+            
+            pst.setInt(6, Integer.parseInt(txtUsuId.getText()));
+            //pst.setString(6, txtUsuId.getText());
             if (txtUsuNome.getText().isEmpty() || txtUsuLogin.getText().isEmpty() || txtUsuSenha.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preenchar todos os campos obrigatorios");
             } else {
@@ -110,7 +118,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                 System.out.println(adicionado);
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Dados do usuário alterados com sucesso");
-
+                    txtUsuId.setText(null);
                     txtUsuNome.setText(null);
                     txtUsuFone.setText(null);
                     txtUsuLogin.setText(null);
@@ -131,10 +139,12 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             String sql = "delete from tbusuarios where iduser=?";
             try {
                 pst = conexao.prepareStatement(sql);
-                pst.setString(1, txtUsuId.getText());
+                pst.setInt(1, Integer.parseInt(txtUsuId.getText()));
+                //pst.setString(1, txtUsuId.getText());
                 int apagado = pst.executeUpdate();
                 if (apagado > 0) {
                     JOptionPane.showMessageDialog(null, "Usuário Removido com sucesso");
+                    txtUsuId.setText(null);
                     txtUsuNome.setText(null);
                     txtUsuFone.setText(null);
                     txtUsuLogin.setText(null);
