@@ -1,9 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
+
+import bll.Tipo_MiniaturaBll;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Tipo_Miniaturas;
 
 /**
  *
@@ -11,13 +13,51 @@ package view;
  */
 public class TelaTipo_Miniatura extends javax.swing.JInternalFrame {
 
+    Tipo_Miniaturas tMiniatura = new Tipo_Miniaturas();
+    Tipo_MiniaturaBll tMiniaturasBll = new Tipo_MiniaturaBll();
+    
+        
     /**
      * Creates new form TelaTipo_Miniatura
      */
     public TelaTipo_Miniatura() {
         initComponents();
     }
+    
+    private void consultarTipo_Miniaturas(List<Tipo_Miniaturas> lista) throws Exception {
+        DefaultTableModel modelo = (DefaultTableModel) tableTipoMiniatura.getModel();
+        modelo.setNumRows(0);
+        for (int pos = 0; pos < lista.size(); pos++) {
+            String[] linha = new String[2];
+            Tipo_Miniaturas aux = lista.get(pos);
+            linha[0] = aux.getIden() + "";
+            linha[1] = aux.getTipo()+ "";
+            modelo.addRow(linha);
 
+        }
+    }
+    
+    private void limpaCampos() {
+        txtTipId.setText("");
+        txtTipTipo.setText("");
+    }
+
+    private void preencheCampos(int id) throws Exception {
+
+        try {
+            if (id > 0) {
+
+                tMiniatura = tMiniaturasBll.consultaTipo_MiniaturasPorId(id);
+                txtTipId.setText(id + "");
+                txtTipTipo.setText(tMiniatura.getTipo());
+                btnTipoSalvar.setLabel("Editar");
+            } else {
+                btnTipoSalvar.setLabel("Salvar");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,11 +72,11 @@ public class TelaTipo_Miniatura extends javax.swing.JInternalFrame {
         txtTipId = new javax.swing.JTextField();
         txtTipTipo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableTipo = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tableTipoMiniatura = new javax.swing.JTable();
+        btnTipoSalvar = new javax.swing.JButton();
+        btnTipoExcluir = new javax.swing.JButton();
+        btnTipoConsultar = new javax.swing.JButton();
+        btnTipoNovo = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -48,7 +88,7 @@ public class TelaTipo_Miniatura extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Tipo");
 
-        tableTipo.setModel(new javax.swing.table.DefaultTableModel(
+        tableTipoMiniatura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -64,20 +104,49 @@ public class TelaTipo_Miniatura extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tableTipo);
-        if (tableTipo.getColumnModel().getColumnCount() > 0) {
-            tableTipo.getColumnModel().getColumn(0).setMinWidth(50);
-            tableTipo.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tableTipo.getColumnModel().getColumn(0).setMaxWidth(50);
+        tableTipoMiniatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableTipoMiniaturaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableTipoMiniatura);
+        if (tableTipoMiniatura.getColumnModel().getColumnCount() > 0) {
+            tableTipoMiniatura.getColumnModel().getColumn(0).setMinWidth(50);
+            tableTipoMiniatura.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tableTipoMiniatura.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
-        jButton1.setText("Salvar");
+        btnTipoSalvar.setText("Salvar");
+        btnTipoSalvar.setPreferredSize(new java.awt.Dimension(100, 45));
+        btnTipoSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoSalvarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Excluir");
+        btnTipoExcluir.setText("Excluir");
+        btnTipoExcluir.setPreferredSize(new java.awt.Dimension(100, 45));
+        btnTipoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoExcluirActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Consultar");
+        btnTipoConsultar.setText("Consultar");
+        btnTipoConsultar.setPreferredSize(new java.awt.Dimension(100, 45));
+        btnTipoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoConsultarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Novo");
+        btnTipoNovo.setText("Novo");
+        btnTipoNovo.setPreferredSize(new java.awt.Dimension(100, 45));
+        btnTipoNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoNovoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,14 +169,14 @@ public class TelaTipo_Miniatura extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTipoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTipoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTipoConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addComponent(btnTipoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,29 +194,80 @@ public class TelaTipo_Miniatura extends javax.swing.JInternalFrame {
                         .addComponent(txtTipTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(btnTipoConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTipoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnTipoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTipoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 562, 347);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnTipoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoSalvarActionPerformed
+        try {
+            tMiniatura.setTipo(txtTipTipo.getText());
+            if (btnTipoSalvar.getLabel().equals("Salvar")) {
+                tMiniaturasBll.adicionarTipo_Miniatura(tMiniatura);
+            } else {
+                tMiniaturasBll.alterarTipo_Miniatura(tMiniatura);
+            }
+            consultarTipo_Miniaturas(tMiniaturasBll.consultarTipo_Miniaturas());
+            limpaCampos();
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnTipoSalvarActionPerformed
+
+    private void btnTipoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoExcluirActionPerformed
+        try {
+            tMiniaturasBll.removerTipo_Miniatura(tMiniaturasBll.consultaTipo_MiniaturasPorId(tMiniatura.getIden()));
+            limpaCampos();
+            consultarTipo_Miniaturas(tMiniaturasBll.consultarTipo_Miniaturas());
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }//GEN-LAST:event_btnTipoExcluirActionPerformed
+
+    private void btnTipoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoConsultarActionPerformed
+        try {
+            consultarTipo_Miniaturas(tMiniaturasBll.consultarTipo_Miniaturas());
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }//GEN-LAST:event_btnTipoConsultarActionPerformed
+
+    private void btnTipoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoNovoActionPerformed
+        limpaCampos();
+        txtTipTipo.requestFocus();
+        btnTipoSalvar.setLabel("Salvar");
+    }//GEN-LAST:event_btnTipoNovoActionPerformed
+
+    private void tableTipoMiniaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTipoMiniaturaMouseClicked
+        int linha = tableTipoMiniatura.getSelectedRow();
+        Integer codigo = Integer.parseInt(tableTipoMiniatura.getValueAt(linha, 0).toString());
+        try {
+            preencheCampos((int) codigo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher campo");
+        }
+    }//GEN-LAST:event_tableTipoMiniaturaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnTipoConsultar;
+    private javax.swing.JButton btnTipoExcluir;
+    private javax.swing.JButton btnTipoNovo;
+    private javax.swing.JButton btnTipoSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableTipo;
+    private javax.swing.JTable tableTipoMiniatura;
     private javax.swing.JTextField txtTipId;
     private javax.swing.JTextField txtTipTipo;
     // End of variables declaration//GEN-END:variables
