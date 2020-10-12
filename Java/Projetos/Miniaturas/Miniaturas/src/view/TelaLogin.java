@@ -3,7 +3,6 @@ package view;
 import java.sql.*;
 import dao.ModuloConexao;
 import java.awt.Color;
-import java.awt.Desktop;
 import javax.swing.JOptionPane;
 
 /**
