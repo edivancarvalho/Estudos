@@ -22,7 +22,7 @@ public class TemaDao {
     }
 
     public void addTemas(Temas tema) throws Exception {
-        String sql = "INSERT INTO fabricantes(fab_nome) VALUES (?)";
+        String sql = "INSERT INTO temas(tem_nome) VALUES (?)";
         try {
 
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class TemaDao {
     }
 
     public void deleteTemas(int id) throws Exception {
-        String sql = "DELETE FROM fabricantes WHERE fab_iden=?";
+        String sql = "DELETE FROM temas WHERE tem_iden=?";
         try {
 
             PreparedStatement preparedStatement
@@ -53,7 +53,7 @@ public class TemaDao {
     }
 
     public void updateTemas(Temas tema) throws Exception {
-        String sql = "UPDATE fabricantes SET fab_nome=? WHERE fab_iden=?";
+        String sql = "UPDATE temas SET tem_nome=? WHERE tem_iden=?";
         try {
             PreparedStatement preparedStatement
                     = conexao.prepareStatement(sql);
@@ -71,15 +71,15 @@ public class TemaDao {
 
     public List<Temas> getAllTemas() throws Exception {
         List<Temas> listTemas = new ArrayList<Temas>();
-        String sql = "SELECT * FROM fabricantes";
+        String sql = "SELECT * FROM temas";
         try {
             Statement statement = conexao.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
 
                 Temas tema = new Temas();
-                tema.setIden(rs.getInt("fab_iden"));
-                tema.setNome(rs.getString("fab_nome"));
+                tema.setIden(rs.getInt("tem_iden"));
+                tema.setNome(rs.getString("tem_nome"));
 
                 listTemas.add(tema);
 
@@ -93,18 +93,18 @@ public class TemaDao {
 
     public Temas getTemasById(int id) throws Exception {
         Temas tema = new Temas();
-        String sql = "SELECT * FROM fabricantes WHERE fab_iden=?";
+        String sql = "SELECT * FROM temas WHERE tem_iden=?";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                tema.setIden(rs.getInt("fab_iden"));
-                tema.setNome(rs.getString("fab_nome"));
+                tema.setIden(rs.getInt("tem_iden"));
+                tema.setNome(rs.getString("tem_nome"));
             }
         } catch (Exception erro) {
-            throw new Exception("Ocorreu um erro ao buscar este registro de fabricantes\n"
+            throw new Exception("Ocorreu um erro ao buscar este registro de Temas\n"
                     + erro.getMessage());
         }
         return tema;
