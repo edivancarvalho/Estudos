@@ -71,8 +71,8 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
         MenuCliente = new javax.swing.JMenuItem();
         menUsuarios = new javax.swing.JMenuItem();
         MenuFabricantes = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        MenuTipoMiniaturas = new javax.swing.JMenuItem();
+        MenuTemas = new javax.swing.JMenuItem();
         MenRel = new javax.swing.JMenu();
         menRelSer = new javax.swing.JMenuItem();
         MenAJu = new javax.swing.JMenu();
@@ -131,13 +131,23 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
         });
         Menu.add(MenuFabricantes);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Tipo de Miniaturas");
-        Menu.add(jMenuItem1);
+        MenuTipoMiniaturas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        MenuTipoMiniaturas.setText("Tipo de Miniaturas");
+        MenuTipoMiniaturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuTipoMiniaturasActionPerformed(evt);
+            }
+        });
+        Menu.add(MenuTipoMiniaturas);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Temas");
-        Menu.add(jMenuItem2);
+        MenuTemas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        MenuTemas.setText("Temas");
+        MenuTemas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuTemasActionPerformed(evt);
+            }
+        });
+        Menu.add(MenuTemas);
 
         jMenuBar1.add(Menu);
 
@@ -267,6 +277,18 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
         //desktop.add(fabricantes);
     }//GEN-LAST:event_MenuActionPerformed
 
+    private void MenuTipoMiniaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTipoMiniaturasActionPerformed
+        TelaTipo_Miniatura ttipoMiniatura = new TelaTipo_Miniatura();
+        ttipoMiniatura.setVisible(true);
+        desktop.add(ttipoMiniatura);
+    }//GEN-LAST:event_MenuTipoMiniaturasActionPerformed
+
+    private void MenuTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTemasActionPerformed
+        TelaTema ttema = new TelaTema();
+        ttema.setVisible(true);
+        desktop.add(ttema);
+    }//GEN-LAST:event_MenuTemasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,10 +336,10 @@ public class TelaPrincipal1 extends javax.swing.JFrame {
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem MenuCliente;
     private javax.swing.JMenuItem MenuFabricantes;
+    private javax.swing.JMenuItem MenuTemas;
+    private javax.swing.JMenuItem MenuTipoMiniaturas;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblData;
     public static javax.swing.JLabel lblUsuario;
     public static javax.swing.JMenuItem menRelSer;
