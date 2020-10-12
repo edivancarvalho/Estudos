@@ -5,10 +5,9 @@ package model;
  * @author edivan
  */
 public class Fabricantes {
+
     private int iden;
     private String nome;
-    
-    Miniaturas miniaturas = new Miniaturas(iden, nome, nome, nome, nome, nome, iden);
 
     public Fabricantes() {
     }
@@ -34,17 +33,9 @@ public class Fabricantes {
         this.nome = nome;
     }
 
-    public Miniaturas getMiniaturas() {
-        return miniaturas;
+    public void print() {
+        System.out.println("----\t FABRICANTES \t----");
+        System.out.println("Iden: " + this.iden + ", Nome: " + this.nome);
     }
 
-    public void setMiniaturas(Miniaturas miniaturas) {
-        this.miniaturas = miniaturas;
-    }
-    
-    public void print(){
-        System.out.println("----\t FABRICANTES \t----");
-        System.out.println("Iden: "+this.iden+", Nome: "+this.nome);
-    }
-    
 }
