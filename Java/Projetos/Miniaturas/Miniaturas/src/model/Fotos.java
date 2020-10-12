@@ -9,7 +9,7 @@ public class Fotos {
     private String caminho;
     private String descricao;
     
-    Miniaturas miniaturas = new Miniaturas(iden, caminho, caminho, descricao, descricao, descricao, iden);
+    Miniaturas miniaturas;
 
     public Fotos(int iden, String caminho, String descricao) {
         this.iden = iden;
