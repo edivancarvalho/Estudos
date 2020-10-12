@@ -8,13 +8,13 @@ import model.Tipo_Miniaturas;
  *
  * @author edivan
  */
-public class Tipo_Miniatura {
+public class Tipo_MiniaturaBll {
     
     // chama a classe FabricanteDAo
     private Tipo_MiniaturaDao fabDao;
 
     // Construtor recebendo a conexao atravez da fabDao pelo objeto fabricanteDao;
-    public Tipo_Miniatura() {
+    public Tipo_MiniaturaBll() {
         fabDao = new Tipo_MiniaturaDao();
     }
 
