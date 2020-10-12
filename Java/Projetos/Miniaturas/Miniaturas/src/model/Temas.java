@@ -5,10 +5,10 @@ package model;
  * @author edivan
  */
 public class Temas {
+
     private int iden;
     private String nome;
 
-    Miniaturas miniaturas = new Miniaturas(iden, nome, nome, nome, nome, nome, iden);
     public Temas() {
     }
 
@@ -33,18 +33,10 @@ public class Temas {
         this.nome = nome;
     }
 
-    public Miniaturas getMiniaturas() {
-        return miniaturas;
-    }
-
-    public void setMiniaturas(Miniaturas miniaturas) {
-        this.miniaturas = miniaturas;
-    }
-    
-    public void print(){
+    public void print() {
         System.out.println("----\tTemas \t----");
-        System.out.println("Iden: "+this.iden+", Nome: "+this.nome);
+        System.out.println("Iden: " + this.iden + ", Nome: " + this.nome);
         System.out.println("-----------------------------");
     }
-    
+
 }
