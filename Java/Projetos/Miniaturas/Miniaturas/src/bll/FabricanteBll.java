@@ -37,7 +37,7 @@ public class FabricanteBll {
         return fabDao.getAllFabricantes();
     }
 
-    public Fabricantes consultaFabricantesPorId(int id) throws Exception {
+    public Fabricantes consultarFabricantesPorId(int id) throws Exception {
         return fabDao.getFabricanteById(id);
     }
 

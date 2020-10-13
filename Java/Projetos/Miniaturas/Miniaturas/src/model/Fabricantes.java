@@ -37,5 +37,11 @@ public class Fabricantes {
         System.out.println("----\t FABRICANTES \t----");
         System.out.println("Iden: " + this.iden + ", Nome: " + this.nome);
     }
-
+    
+    public void setSplitFabricante(String combo){
+        String [] dados = combo.split(" - ");
+        this.iden = Integer.parseInt(dados[0]);
+        this.nome = dados[1];
+        
+    }
 }

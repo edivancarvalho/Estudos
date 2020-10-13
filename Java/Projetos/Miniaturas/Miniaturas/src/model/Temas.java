@@ -38,5 +38,11 @@ public class Temas {
         System.out.println("Iden: " + this.iden + ", Nome: " + this.nome);
         System.out.println("-----------------------------");
     }
-
+    
+    public void setSplitTemas(String combo){
+        String [] dados = combo.split(" - ");
+        this.iden = Integer.parseInt(dados[0]);
+        this.nome = dados[1];
+        
+    }
 }

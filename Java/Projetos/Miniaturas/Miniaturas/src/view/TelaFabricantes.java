@@ -48,7 +48,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
 
             if (id > 0) {
 
-                fab = fabBll.consultaFabricantesPorId(id);
+                fab = fabBll.consultarFabricantesPorId(id);
                 txtFabId.setText(id + "");
                 txtFabNome.setText(fab.getNome());
                 btnFabSalvar.setLabel("Editar");
@@ -226,7 +226,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
 
     private void btnFabExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFabExcluirActionPerformed
         try {
-            fabBll.removerFabricante(fabBll.consultaFabricantesPorId(fab.getIden()));
+            fabBll.removerFabricante(fabBll.consultarFabricantesPorId(fab.getIden()));
             limpaCampos();
             consultarFabricantes(fabBll.consultarFabricantes());
         } catch (Exception e) {

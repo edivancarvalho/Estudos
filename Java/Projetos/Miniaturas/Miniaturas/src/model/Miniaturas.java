@@ -14,9 +14,9 @@ public class Miniaturas {
     private String escala;
     private String valor;
 
-    private Fabricantes[] fabricantes;
-    private Tipo_Miniaturas[] tipo_miniaturas;
-    private Temas[] temas;
+    private Fabricantes fabricantes;
+    private Tipo_Miniaturas tipo_miniaturas;
+    private Temas temas;
     private Fotos[] fotos;
 
     public Miniaturas() {
@@ -101,27 +101,27 @@ public class Miniaturas {
         this.valor = valor;
     }
 
-    public Fabricantes[] getFabricantes() {
+    public Fabricantes getFabricantes() {
         return fabricantes;
     }
 
-    public void setFabricantes(Fabricantes[] fabricantes) {
+    public void setFabricantes(Fabricantes fabricantes) {
         this.fabricantes = fabricantes;
     }
 
-    public Tipo_Miniaturas[] getTipo_miniaturas() {
+    public Tipo_Miniaturas getTipo_miniaturas() {
         return tipo_miniaturas;
     }
 
-    public void setTipo_miniaturas(Tipo_Miniaturas[] tipo_miniaturas) {
+    public void setTipo_miniaturas(Tipo_Miniaturas tipo_miniaturas) {
         this.tipo_miniaturas = tipo_miniaturas;
     }
 
-    public Temas[] getTemas() {
+    public Temas getTemas() {
         return temas;
     }
 
-    public void setTemas(Temas[] temas) {
+    public void setTemas(Temas temas) {
         this.temas = temas;
     }
 

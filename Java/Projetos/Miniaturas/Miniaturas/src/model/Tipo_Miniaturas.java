@@ -38,5 +38,12 @@ public class Tipo_Miniaturas {
         System.out.println("Iden: " + this.iden + ", Tipo: " + this.tipo);
 
     }
+    
+    public void setSplitTipo_Miniaturas(String combo){
+        String [] dados = combo.split(" - ");
+        this.iden = Integer.parseInt(dados[0]);
+        this.tipo = dados[1];
+        
+    }
 
 }

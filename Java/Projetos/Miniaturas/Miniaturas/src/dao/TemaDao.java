@@ -28,6 +28,8 @@ public class TemaDao {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
 
             preparedStatement.setString(1, tema.getNome());
+// ---------------------------------------------------------------
+            
             preparedStatement.executeUpdate();
 
         } catch (SQLException erro) {

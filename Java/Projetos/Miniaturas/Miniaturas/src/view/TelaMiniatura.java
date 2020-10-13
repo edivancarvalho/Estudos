@@ -1,10 +1,18 @@
 package view;
 
+import bll.FabricanteBll;
 import bll.MiniaturaBll;
+import bll.TemaBll;
+import bll.Tipo_MiniaturaBll;
 import java.sql.*;
 import dao.ModuloConexao;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Fabricantes;
 import model.Miniaturas;
+import model.Temas;
+import model.Tipo_Miniaturas;
 // recursos da biblioteca rs2xml.jar
 import net.proteanit.sql.DbUtils;
 
@@ -13,51 +21,87 @@ import net.proteanit.sql.DbUtils;
  * @author edivan
  */
 public class TelaMiniatura extends javax.swing.JInternalFrame {
-
+    
+    FabricanteBll fabBll = new FabricanteBll();
+    TemaBll temaBll = new TemaBll();
+    Tipo_MiniaturaBll tipoBll = new Tipo_MiniaturaBll();
+    MiniaturaBll miniBll;
+    
+    Miniaturas mini = new Miniaturas();
+    
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    MiniaturaBll miniBll;
-
     /**
      * Creates new form TelaCliente
      */
-    public TelaMiniatura() {
+    public TelaMiniatura() throws Exception {
         miniBll = new MiniaturaBll();
         initComponents();
         conexao = ModuloConexao.conector();
-
+        
+        List<Fabricantes> listaFabricantes = new ArrayList<Fabricantes>();
+        listaFabricantes = fabBll.consultarFabricantes();
+        
+        cbFabricante.removeAllItems();
+        cbFabricante.addItem("< Selecione aqui o fabricante >");
+        for (int i = 0; i < listaFabricantes.size(); i++) {
+            Fabricantes aux = listaFabricantes.get(i);
+            cbFabricante.addItem(aux.getIden() + " - " + aux.getNome().toUpperCase());
+        }
+        
+        List<Tipo_Miniaturas> listaTipoDeMiniaturas = new ArrayList<>();
+        listaTipoDeMiniaturas = tipoBll.consultarTipo_Miniaturas();
+        
+        cbTipoMini.removeAllItems();
+        cbTipoMini.addItem("< Selecione aqui o tipo de miniatura >");
+        for (int pos = 0; pos < listaTipoDeMiniaturas.size(); pos++) {
+            Tipo_Miniaturas aux = listaTipoDeMiniaturas.get(pos);
+            cbTipoMini.addItem(aux.getIden() + " - " + aux.getTipo().toUpperCase());
+        }
+        
+        List<Temas> listaTemas = new ArrayList<>();
+        listaTemas = temaBll.consultarTemas();
+        
+        cbTema.removeAllItems();
+        cbTema.addItem("< Selecione aqui o tema da miniatura >");
+        for (int pos = 0; pos < listaTemas.size(); pos++) {
+            Temas aux = listaTemas.get(pos);
+            cbTema.addItem(aux.getIden() + " - " + aux.getNome().toUpperCase());
+        }
+        
     }
 
     // Metodo para adicionar miniaturas
-    private void adicionar() {
-        String resultado = "";
-        Miniaturas mini = new Miniaturas();
-        mini.setModelo(txtCliModelo.getText());
-        mini.setAno(txtCliAno.getText());
-        mini.setObservacoes(txtCliObservacoes.getText());
-        mini.setEdicao(txtCliEdicao.getText());
-        mini.setEscala(txtCliEscala.getText());
-        mini.setValor(txtCliValor.getText());
-
-        resultado = miniBll.AdicionarMiniatura(mini);
-        JOptionPane.showMessageDialog(null, resultado);
-
-        txtCliModelo.setText(null);
-        txtCliAno.setText(null);
-        txtCliObservacoes.setText(null);
-        txtCliEdicao.setText(null);
-        txtCliEscala.setText(null);
-        txtCliValor.setText(null);
-    }
+//    private void adicionar() {
+//        String resultado = "";
+//        
+//        mini.setModelo(txtCliModelo.getText());
+//        mini.setAno(txtCliAno.getText());
+//        mini.setObservacoes(txtCliObservacoes.getText());
+//        mini.setEdicao(txtCliEdicao.getText());
+//        mini.setEscala(txtCliEscala.getText());
+//        mini.setValor(txtCliValor.getText());
+//        
+//        JOptionPane.showMessageDialog(null, resultado);
+//        
+//        txtCliModelo.setText(null);
+//        txtCliAno.setText(null);
+//        txtCliObservacoes.setText(null);
+//        txtCliEdicao.setText(null);
+//        txtCliEscala.setText(null);
+//        txtCliValor.setText(null);
+//    }
 
     // metodo para pesquisar clientes pelo nome com filtro;
+   
+    
     private void pesquisar_miniatura() {
         rs = miniBll.consultarMiniaturaPorNome(txtCliPesquisar.getText());
         // usando a biblioteca rs2mxl.jar para preencher a tabela 
         tblClientes.setModel(DbUtils.resultSetToTableModel(rs));
-
+        
     }
 
     /**
@@ -96,12 +140,9 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
         jTextField4 = new javax.swing.JTextField();
         btnUploadFoto = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtFabricante = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtTema = new javax.swing.JTextField();
-        txtTipoDeMiniatura = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        cbTipoMini = new javax.swing.JComboBox<>();
+        cbFabricante = new javax.swing.JComboBox<>();
+        cbTema = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -110,7 +151,7 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
 
         jLabel1.setText("* Campos Obrigatorio");
 
-        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setText("Salvar");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
@@ -201,10 +242,9 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCliEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtCliAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel4)
+                        .addComponent(txtCliAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCliEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -254,50 +294,55 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel2.setText("Fabricante: ");
+        cbTipoMini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbTipoMiniMouseClicked(evt);
+            }
+        });
 
-        jLabel11.setText("Tema:  ");
+        cbFabricante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbFabricanteMouseClicked(evt);
+            }
+        });
 
-        jLabel10.setText("Tipo Miniatura: ");
+        cbTema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbTemaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFabricante, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(txtTema))))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtTipoDeMiniatura, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTema, 0, 227, Short.MAX_VALUE)
+                    .addComponent(cbTipoMini, javax.swing.GroupLayout.Alignment.TRAILING, 0, 227, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(cbFabricante, 0, 227, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipoDeMiniatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE)
+                .addComponent(cbTipoMini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(cbTema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(cbFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(156, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,8 +360,8 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
                         .addGap(70, 70, 70)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(btnAdicionar)
+                        .addGap(203, 203, 203)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterar)
                         .addGap(18, 18, 18)
@@ -327,10 +372,10 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdicionar, btnAlterar, btnremover});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnremover});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,14 +392,14 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdicionar)
+                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar)
                     .addComponent(btnremover))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 955, 579);
@@ -362,13 +407,57 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // Metodo para adicionar clientes
-        adicionar();
+        try {
+            mini.setModelo(txtCliModelo.getText());
+            mini.setAno(txtCliAno.getText());
+            mini.setObservacoes(txtCliObservacoes.getText());
+            mini.setEdicao(txtCliEdicao.getText());
+            mini.setEscala(txtCliEscala.getText());
+            mini.setValor(txtCliValor.getText());
+            
+            Fabricantes fab = new Fabricantes();            
+            fab.setSplitFabricante(cbFabricante.getSelectedItem().toString());
+            mini.setFabricantes(fab);
+            
+            Tipo_Miniaturas tmini = new Tipo_Miniaturas();
+            tmini.setSplitTipo_Miniaturas(cbTipoMini.getSelectedItem().toString());
+            mini.setTipo_miniaturas(tmini);
+            
+            Temas tema = new Temas();
+            tema.setSplitTemas(cbTema.getSelectedItem().toString());
+            mini.setTemas(tema);
+            System.out.println("teste1");
+            
+            if (btnAdicionar.getLabel().equals("Salvar")) {
+                miniBll.adicionarMiniatura(mini);
+                System.out.println("teste 2 ");
+                
+            }else{
+                miniBll.alterarMiniatura(mini);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error ao salvar!");
+        }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 // evento abaixo é do tipo "enquato for digitando"
     private void txtCliPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliPesquisarKeyReleased
         // chamar o metodo pesquisar miniaturas. 
         pesquisar_miniatura();
     }//GEN-LAST:event_txtCliPesquisarKeyReleased
+    
+
+    private void cbTipoMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbTipoMiniMouseClicked
+
+    }//GEN-LAST:event_cbTipoMiniMouseClicked
+
+    private void cbFabricanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFabricanteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFabricanteMouseClicked
+
+    private void cbTemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbTemaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTemaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -376,10 +465,10 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JToggleButton btnUploadFoto;
     private javax.swing.JButton btnremover;
+    private javax.swing.JComboBox<Object> cbFabricante;
+    private javax.swing.JComboBox<Object> cbTema;
+    private javax.swing.JComboBox<Object> cbTipoMini;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -402,8 +491,5 @@ public class TelaMiniatura extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCliObservacoes;
     private javax.swing.JTextField txtCliPesquisar;
     private javax.swing.JTextField txtCliValor;
-    private javax.swing.JTextField txtFabricante;
-    private javax.swing.JTextField txtTema;
-    private javax.swing.JTextField txtTipoDeMiniatura;
     // End of variables declaration//GEN-END:variables
 }
