@@ -1,4 +1,3 @@
-
 package view;
 
 import bll.TemaBll;
@@ -44,18 +43,14 @@ public class TelaTema extends javax.swing.JInternalFrame {
     private void preencheCampos(int id) throws Exception {
 
         try {
-
             if (id > 0) {
-
                 tema = temaBll.consultaTemasPorId(id);
                 txtTemId.setText(id + "");
                 txtTemNome.setText(tema.getNome());
                 btnTemaSalvar.setLabel("Editar");
             } else {
                 btnTemaSalvar.setLabel("Salvar");
-
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -213,6 +208,7 @@ public class TelaTema extends javax.swing.JInternalFrame {
             tema.setNome(txtTemNome.getText());
             if (btnTemaSalvar.getLabel().equals("Salvar")) {
                 temaBll.adicionarTema(tema);
+                JOptionPane.showMessageDialog(null, "Tema inserido com sucesso.");
             } else {
                 temaBll.alterarTema(tema);
             }

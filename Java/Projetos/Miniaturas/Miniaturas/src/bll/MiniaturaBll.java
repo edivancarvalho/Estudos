@@ -3,7 +3,6 @@ package bll;
 import dao.MiniaturaDao;
 import java.sql.ResultSet;
 import java.util.List;
-import javax.swing.JOptionPane;
 import model.Miniaturas;
 
 /**

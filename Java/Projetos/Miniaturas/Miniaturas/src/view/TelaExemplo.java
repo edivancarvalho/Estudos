@@ -34,6 +34,10 @@ public class TelaExemplo extends javax.swing.JInternalFrame {
         btnImagem = new javax.swing.JButton();
         blnEnviar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jLabel1.setText("Imagem");
 
         btnImagem.setText("Selecionar Imagem");

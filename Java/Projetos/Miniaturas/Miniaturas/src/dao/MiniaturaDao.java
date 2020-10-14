@@ -74,6 +74,8 @@ public class MiniaturaDao {
     }
 
     public void updateMiniatura(Miniaturas mini) throws Exception {
+        //String sql = "UPDATE miniaturas SET min_modelo=?, min_ano=?, min_observacoes=?, min_edicao=?, min_escala=?, min_valor=?, min_fab_iden=?,min_tmin_iden=?,min_tem_iden=? WHERE min_modelo=?";
+        
         String sql = "UPDATE miniaturas SET min_modelo=?, min_ano=?, min_observacoes=?, min_edicao=?, min_escala=?, min_valor=?, min_fab_iden=?,min_tmin_iden=?,min_tem_iden=? WHERE min_iden=?";
 
         try {
@@ -92,6 +94,7 @@ public class MiniaturaDao {
             pst.setInt(8, mini.getTemas().getIden());
             pst.setInt(9, mini.getTipo_miniaturas().getIden());
             pst.setInt(10, mini.getIden());
+            //pst.setString(10, mini.getModelo());
 
             pst.executeUpdate();
 
@@ -173,7 +176,9 @@ public class MiniaturaDao {
     public ResultSet consultarMiniaturaPorNome(String nome) {
         ResultSet rs = null;
 
-        String sql = "select * from miniaturas where min_modelo like ?";
+        //String sql = "select * from miniaturas where min_modelo like ?";
+        //String sql = "select * from miniaturas where min_modelo like ?";
+        String sql = "select * from miniaturas where  min_modelo like ? order by min_iden";
         PreparedStatement pst;
 
         try {

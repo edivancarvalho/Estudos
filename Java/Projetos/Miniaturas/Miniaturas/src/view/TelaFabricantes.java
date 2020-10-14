@@ -82,6 +82,7 @@ public class TelaFabricantes extends javax.swing.JInternalFrame {
         btnFabConsultar = new javax.swing.JButton();
         btnFabNovo = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Tela de Cadastro Fabricantes");
