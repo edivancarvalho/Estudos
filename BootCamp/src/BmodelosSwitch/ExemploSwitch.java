@@ -1,4 +1,4 @@
-package modelosSwitch;
+package BmodelosSwitch;
 
 import java.util.Scanner;
 
