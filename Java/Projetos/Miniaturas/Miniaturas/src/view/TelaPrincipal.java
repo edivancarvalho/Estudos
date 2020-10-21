@@ -269,6 +269,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         Menu.setText("Cadastro");
 
@@ -379,6 +384,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 //            System.exit(0);
 
     }//GEN-LAST:event_OpcoesSairActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
          * @param args the command line arguments
