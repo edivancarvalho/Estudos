@@ -94,8 +94,10 @@ public class TemaDao {
     }
 
     public Temas getTemasById(int id) throws Exception {
+        
         Temas tema = new Temas();
         String sql = "SELECT * FROM temas WHERE tem_iden=?";
+        
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, id);

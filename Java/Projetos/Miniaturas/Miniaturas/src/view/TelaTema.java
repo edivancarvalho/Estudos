@@ -12,6 +12,7 @@ import model.Temas;
  */
 public class TelaTema extends javax.swing.JInternalFrame {
 
+    
     Temas tema = new Temas();
     TemaBll temaBll = new TemaBll();
 
@@ -23,8 +24,10 @@ public class TelaTema extends javax.swing.JInternalFrame {
     }
 
     private void consultarTemas(List<Temas> lista) throws Exception {
+        
         DefaultTableModel modelo = (DefaultTableModel) tableTemas.getModel();
         modelo.setNumRows(0);
+        
         for (int pos = 0; pos < lista.size(); pos++) {
             String[] linha = new String[2];
             Temas aux = lista.get(pos);
