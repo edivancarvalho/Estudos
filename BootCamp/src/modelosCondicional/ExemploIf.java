@@ -1,4 +1,4 @@
-package modelos;
+package modelosCondicional;
 
 import java.util.Scanner;
 
