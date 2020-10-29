@@ -12,30 +12,30 @@ public class atividade01 {
         Scanner scan = new Scanner(System.in);
 
         Scanner sc = new Scanner(System.in);
-        int x, y;
-        x = 1;
-        y = 1;
+        int a, l;
+        a = 1;
+        l = 0;
         System.out.println("Digite o tamanho do lado do quadrado");
         int lado = sc.nextInt();
-        while (y <= lado) {
+        while (l <= lado) {
 
-            while (x <= lado) {
+            while (a <= lado) {
 
-                if ((y == 1) || (y == lado)) {
+                if ((l == 1) || (l == lado)) {
                     System.out.print("* ");
-                    x++;
+                    a++;
                 } else {
-                    if ((x == 1) || (x == lado)) {
+                    if ((a == 1) || (a == lado)) {
                         System.out.print("* ");
                     } else {
                         System.out.print("  ");
                     }
-                    x++;
+                    a++;
                 }
             }
             System.out.println("");
-            y++;
-            x = 1;
+            l++;
+            a = 1;
         }
 
     }
