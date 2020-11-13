@@ -42,12 +42,16 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPanel3" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="txtResultado" alignment="1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="txtResultado" min="-2" pref="185" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +64,7 @@
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="txtResultado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,10 +84,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnLigarChave1" min="-2" pref="83" max="-2" attributes="0"/>
+                  <Component id="btnLigarChave1" min="-2" pref="89" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnLigarDigital" min="-2" pref="86" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnLigarDigital" min="-2" pref="90" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -140,21 +144,21 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDesligarChave" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnDesligarDigital" min="-2" pref="98" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="btnDesligarDigital" min="-2" pref="92" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnDesligarDigital" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnDesligarChave" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDesligarDigital" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="58" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -163,6 +167,7 @@
         <Component class="javax.swing.JButton" name="btnDesligarDigital">
           <Properties>
             <Property name="text" type="java.lang.String" value="Digital"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesligarDigitalActionPerformed"/>
@@ -171,6 +176,7 @@
         <Component class="javax.swing.JButton" name="btnDesligarChave">
           <Properties>
             <Property name="text" type="java.lang.String" value="Chave"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesligarChaveActionPerformed"/>
