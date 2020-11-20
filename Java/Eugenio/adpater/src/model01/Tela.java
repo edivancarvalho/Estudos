@@ -1,6 +1,6 @@
 package model01;
 
-import javax.swing.JTextArea;
+import dal.SingletonDal;
 
 /**
  *
@@ -8,6 +8,8 @@ import javax.swing.JTextArea;
  */
 public class Tela extends javax.swing.JFrame {
 
+    Chave chave = new Chave();
+    SingletonDal dal = SingletonDal.getInstance();
     /**
      * Creates new form Tela
      */
@@ -152,11 +154,15 @@ public class Tela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+
     private void btnLigarChave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigarChave1ActionPerformed
         try {
             Dispositivo dispositivo = new Chave();
             txtResultado.setText(dispositivo.ligar("0"));
-            ligarEnableButtons(true);
+            ligarEnableButtons(true);            
+            dal.logSalvar(txtResultado.getText());
+            //logSalvar();
         } catch (Exception e) {
         }
 
@@ -168,6 +174,7 @@ public class Tela extends javax.swing.JFrame {
             Dispositivo digital = new LigarComAdapter();
             txtResultado.setText(digital.desligar("1"));
             ligarEnableButtons(false);
+            dal.logSalvar(txtResultado.getText());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnDesligarDigitalActionPerformed
@@ -178,6 +185,7 @@ public class Tela extends javax.swing.JFrame {
             Dispositivo digital = new LigarComAdapter();
             txtResultado.setText(digital.ligar("1"));
             ligarEnableButtons(true);
+            dal.logSalvar(txtResultado.getText());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnLigarDigitalActionPerformed
@@ -187,6 +195,7 @@ public class Tela extends javax.swing.JFrame {
             Dispositivo dispositivo = new Chave();
             txtResultado.setText(dispositivo.desligar("0"));
             ligarEnableButtons(false);
+            dal.logSalvar(txtResultado.getText());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnDesligarChaveActionPerformed

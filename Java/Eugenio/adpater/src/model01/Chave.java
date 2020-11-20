@@ -1,13 +1,18 @@
 package model01;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 /**
  *
  * @author edivan
  */
 public class Chave implements Dispositivo {
 
-    String ligar = "ligar";
-    String Desligar = "Desligar";
+    
+
+    String ligar = "Ligando com a Chave";
+    String Desligar = "Desligando com a Chave";
 
     public Chave() {
     }
@@ -32,4 +37,5 @@ public class Chave implements Dispositivo {
         return null;
     }
 
+    
 }
