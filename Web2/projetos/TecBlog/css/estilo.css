@@ -1,0 +1,109 @@
+/* limpar formatações padrão*/
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 1em;
+    font-family: "Times New Roman", Times, sans-serif;
+    background: blanchedalmond;
+}
+/*
+=======     Layout      =======
+*/
+#area-cabecalho{
+    background: rgb(163, 110, 40);
+    padding: 15px;
+    text-align: center;
+}
+
+#area-logo, #area-menu {
+    padding: 10px;
+}
+
+#area-principal {    
+    width: 920px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+#area-postagens{
+    width: 660px;
+    float: left;
+}
+#area-lateral {
+    width: 240px;
+    float: right;
+}
+
+.postagem {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: chocolate;
+}
+
+.conteudo-lateral{
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.postagem-lateral {
+    text-align: justify;
+    font-size: 0.8em;  
+    padding: 5px;  
+    border-bottom: 1px dotted #b94141;
+}
+#rodape {
+    clear: both;
+    text-align: center;
+    padding: 15px;
+    background: rosybrown;
+}
+
+/*=======     Formatação de Menu      =======*/
+a {
+    text-decoration: none;
+}
+a:link, a:visited{
+    color: #b94141;
+}
+a:hover {
+    text-decoration: underline;
+}
+#area-cabecalho a:link, #area-cabecalho a:visited{
+    color: #ffffff;
+    padding: 8px 12px;
+}
+#area-cabecalho a:hover {
+    color: blanchedalmond;
+    background: #c57777;
+    text-decoration: none;
+}
+
+/*
+=========    Formatações em Geral   ===========
+*/
+h1 {
+    color: #4e4e4e;
+    font-size: 2.5em;
+}
+h2 {
+    color: black;
+}
+h3{
+    color: black;
+    background: darkgray;
+    padding: 5px;
+}
+.branco {
+    color: white;
+}
+
+.data-postagem {
+    font-size: 0.8em;
+    border-bottom: 1px solid red;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
